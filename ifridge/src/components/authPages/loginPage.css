@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.signinGithub{
+  margin-top:40px;
+  display:inline-flex; 
+  align-items:center;
+  min-height:40px;
+  background-color:#24292e; 
+  font-family:'Roboto',sans-serif;
+  font-size:14px; color:white; 
+  text-decoration:none;
+  padding:8px 12px 8px 0px;
+  border-radius: 15px;
+}
+
+.logo{
+  margin: 4rem auto;
+  max-width: 320px;
+  object-position: center top;
+  display: block;
+  animation: bounce 5s infinite alternate;
+  height: 320px;
+  width: 320px;
+}
+
+
