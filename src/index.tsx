@@ -4,14 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
+import {ApolloProvider} from '@apollo/client';
+import graphQLClient from './GraphQlClient';
 
 ReactDOM.render(
   <Router>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Router>,
-  document.getElementById('root')
+  <ApolloProvider client={graphQLClient}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ApolloProvider>
+</Router>,
+document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
