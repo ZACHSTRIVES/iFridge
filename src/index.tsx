@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import {ApolloProvider} from '@apollo/client';
-import graphQLClient from './GraphQlClient';
+import graphQLClient from './GraphQLClient';
 
 ReactDOM.render(
   <Router>
