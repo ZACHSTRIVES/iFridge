@@ -50,6 +50,7 @@ const LoginBox = () => {
           const { data } = await login({ variables: { code } });
           if (data != null) {
             localStorage.setItem("token", data.login.jwt)
+            console.log(data)
           }
         } catch (e) {
           console.log(e);

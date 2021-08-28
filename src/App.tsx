@@ -7,9 +7,9 @@ import { Self } from "./api/__generated__/Self";
 
 
 function App() {
-  const { loading, error, data } = useQuery<Self>(SELF);
+  // const { loading, error, data } = useQuery<Self>(SELF);
   
-  console.log(loading, error, data);
+  // console.log(loading, error, data);
 
   return (
     <div className="App flex">
