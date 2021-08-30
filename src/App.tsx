@@ -7,6 +7,8 @@ import { Self } from "./api/__generated__/Self";
 import ReactLoading from 'react-loading';
 import { useEffect,useState} from 'react';
 import { useHistory} from "react-router-dom";
+import Home from './components/home/home';
+
 
 function App() {
   const { loading, error, data } = useQuery<Self>(SELF);
@@ -19,15 +21,13 @@ function App() {
     }, 1000)
   }, [showLoading])
 
-
-  console.log(loading, error, data);
   return (
     <div className="App flex">
       <Switch>
      
         <Route exact path="/">
           {(() => {
-            if (showLoading) {
+            if (loading) {
               return(
                 <ReactLoading type={"cylon"} height={200} width={100}></ReactLoading>
               );
@@ -41,7 +41,7 @@ function App() {
 
         </Route>
         <Route exact path="/home">
-          {showLoading?<a></a>:<a>{data?.self.gitHub}</a>}
+          {loading?<a></a>:<Home user={data?.self}></Home>}
         </Route>
 
         </Switch>
