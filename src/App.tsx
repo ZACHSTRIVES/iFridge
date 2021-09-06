@@ -13,7 +13,6 @@ import Home from './components/home/home';
 function App() {
   const { loading, error, data } = useQuery<Self>(SELF);
   const [showLoading, setLoading] = useState(true);
-  const history=useHistory();
 
   useEffect(() => {
     setTimeout(() => {
