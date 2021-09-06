@@ -1,8 +1,8 @@
-import React  from "react"
+import React from "react"
 
 
-const Content = ()=>
-<div></div>
+const Content = () =>
+    <div className="content"></div>
 
 
 export default Content;

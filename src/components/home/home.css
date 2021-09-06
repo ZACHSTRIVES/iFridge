@@ -1,22 +1,36 @@
 
 section.homeContainer {
-    background-color: white;
+    /* background-color: white; */
     border-radius: 24px;
     width: 80%;
     height: 80%;
-    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.12);
     margin: 1.5rem auto;
     /* padding: 1.5rem; */
     box-sizing: border-box;
     justify-self: center;
     align-self: center;
     display: flex;
-    
 }
 
+.content{
+    background: #fff;
+    width: 80%;
+    height: 100%;
+    border-radius: 0 24px 24px 0;
+}
 .nav{
     border-radius: 24px 0 0 24px;
     width: 20%;
-    background-color: rgba(0,0,0,0.9);
+    background: rgba(255, 255, 255, 0.3);
     max-width: 200px;
+    border-left: rgba(255,255,255,0.5) 1px solid;
+    border-top: rgba(255,255,255,0.5) 1px solid;
+    border-bottom: rgba(255,255,255,0.5) 1px solid;
+
 }
+
+
+.glass-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }

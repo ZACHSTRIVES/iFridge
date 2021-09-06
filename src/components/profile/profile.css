@@ -1,0 +1,22 @@
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:30px;
+}
+
+.nameFiled{
+    margin-left: 10px;
+}
+
+.nickName{
+    color:rgb(0,0,0);
+    font-size:medium;
+    
+}
+
+.name{
+    color:gray;
+    font-size: small;
+}
+
