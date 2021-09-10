@@ -81,8 +81,8 @@ export const EDIT_FRIDGE = gql`
 
 export const ADD_USERFRIDGE = gql`
   mutation AddUserFridge(
-    $UserId: Int!
-    $FridgeId: Int!
+    $userId: String!
+    $fridgeId: String!
   ) {
     addUserFridge(input: { userId: $userId, fridgeId: $fridgeId }) {
       ...userFridgeFields

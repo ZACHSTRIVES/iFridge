@@ -8,7 +8,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Button } from "@material-ui/core";
 import { AddFridge } from '../../api/__generated__/AddFridge';
 import { ADD_FRIDGE } from '../../api/mutations';
+import { AddUserFridge } from '../../api/__generated__/AddUserFridge';
+import { ADD_USERFRIDGE } from '../../api/mutations';
 import { useMutation } from '@apollo/client';
+import { AddFridge_addFridge } from '../../api/__generated__/AddFridge';
 
 export interface addFridgeModalPropos {
     isShow:boolean
@@ -19,21 +22,32 @@ export interface addFridgeModalPropos {
 
 const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow,controlModal,userID }) => {
     const [fridgeName, setFridgeName] = useState<string>("");
-    const [addFridge]=useMutation<AddFridge>(ADD_FRIDGE)
+    const [addFridge]=useMutation<AddFridge>(ADD_FRIDGE);
+    const [addUserFridge]=useMutation<AddUserFridge>(ADD_USERFRIDGE);
 
     const handleSubmit = async() =>{
-        if(fridgeName==""){
+        if(fridgeName===""){
             return
         }
 
         try{
-            await addFridge({
+            var {data}= await addFridge({
                 variables:{
                     name:fridgeName,
                     ownerId:userID
                 }
 
             })
+            if(data!=null){
+                await addUserFridge({
+                    variables:{
+                        userId:userID,
+                        fridgeId:data.addFridge.id
+    
+                    }
+                })
+
+            }  
             controlModal();
         }catch(e){
             console.log("添加Fridge时报错：",e)
