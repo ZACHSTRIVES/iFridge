@@ -1,12 +1,14 @@
 .fridgeList{
     text-align: center;
-    justify-content: center;
+    align-items: center;
     width:100%;
     display: flex;
+    flex-direction: column;
     margin-top: 25px;
     
 }
 .fridgeTab{
+    margin-top: 7px;
     width: 90%;
     height: 40px;
     border-radius: 8px;

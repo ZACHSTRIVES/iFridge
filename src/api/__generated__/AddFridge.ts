@@ -22,5 +22,5 @@ export interface AddFridge {
 
 export interface AddFridgeVariables {
   name: string;
-  ownerId: number;
+  ownerId: any;
 }
