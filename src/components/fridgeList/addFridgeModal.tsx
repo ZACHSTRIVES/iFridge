@@ -43,7 +43,6 @@ const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow,controlModal,us
                     variables:{
                         userId:userID,
                         fridgeId:data.addFridge.id
-    
                     }
                 })
 

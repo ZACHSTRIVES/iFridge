@@ -133,4 +133,32 @@ export const EDIT_FOOD = gql`
   ${fragments.FRIDGE}
 `;
 
+export const DELETE_FRIDGE = gql`
+  mutation DeleteFridge(
+    $fridgeId: String!
+  ) {
+    deleteFridge(
+      input: {
+        fridgeId:$fridgeId,
+      }
+    ) {
+      ...fridgeFields
+    }
+  }
+  ${fragments.FRIDGE}
+`;
 
+export const DELETE_USERFRIDGE = gql`
+  mutation DeleteUserFridge(
+    $fridgeId: ID!
+  ) {
+    editFridge(
+      input: {
+        fridgeId:$fridgeId,
+      }
+    ) {
+      ...fridgeFields
+    }
+  }
+  ${fragments.FRIDGE}
+`;
