@@ -18,6 +18,6 @@ export interface AddUserFridge {
 }
 
 export interface AddUserFridgeVariables {
-  UserId: number;
-  FridgeId: number;
+  userId: string;
+  fridgeId: string;
 }

@@ -81,8 +81,8 @@ export const EDIT_FRIDGE = gql`
 
 export const ADD_USERFRIDGE = gql`
   mutation AddUserFridge(
-    $UserId: Int!
-    $FridgeId: Int!
+    $userId: String!
+    $fridgeId: String!
   ) {
     addUserFridge(input: { userId: $userId, fridgeId: $fridgeId }) {
       ...userFridgeFields
@@ -133,4 +133,32 @@ export const EDIT_FOOD = gql`
   ${fragments.FRIDGE}
 `;
 
+export const DELETE_FRIDGE = gql`
+  mutation DeleteFridge(
+    $fridgeId: String!
+  ) {
+    deleteFridge(
+      input: {
+        fridgeId:$fridgeId,
+      }
+    ) {
+      ...fridgeFields
+    }
+  }
+  ${fragments.FRIDGE}
+`;
 
+export const DELETE_USERFRIDGE = gql`
+  mutation DeleteUserFridge(
+    $fridgeId: ID!
+  ) {
+    editFridge(
+      input: {
+        fridgeId:$fridgeId,
+      }
+    ) {
+      ...fridgeFields
+    }
+  }
+  ${fragments.FRIDGE}
+`;

@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: AddFridge
+// GraphQL mutation operation: DeleteFridge
 // ====================================================
 
-export interface AddFridge_addFridge {
+export interface DeleteFridge_deleteFridge {
   __typename: "Fridge";
   id: string;
   name: string;
@@ -16,11 +16,10 @@ export interface AddFridge_addFridge {
   created: any;
 }
 
-export interface AddFridge {
-  addFridge: AddFridge_addFridge;
+export interface DeleteFridge {
+  deleteFridge: DeleteFridge_deleteFridge;
 }
 
-export interface AddFridgeVariables {
-  name: string;
-  ownerId: string;
+export interface DeleteFridgeVariables {
+  fridgeId: string;
 }

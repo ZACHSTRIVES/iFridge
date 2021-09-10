@@ -8,7 +8,16 @@
 // ====================================================
 
 export interface Self_self_userFridges_fridge_foods {
-  __typename: "UserFridge";
+  __typename: "Food";
+  id: string;
+  fridgeID: string;
+  originQTY: number;
+  currentQTY: number;
+  type: string;
+  notes: string;
+  expireDate: any;
+  modified: any;
+  created: any;
 }
 
 export interface Self_self_userFridges_fridge_userFridges_user {

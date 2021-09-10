@@ -9,8 +9,8 @@
 
 export interface foodFields {
   __typename: "Food";
-  id: number;
-  fridgeID: number;
+  id: string;
+  fridgeID: string;
   originQTY: number;
   currentQTY: number;
   type: string;
