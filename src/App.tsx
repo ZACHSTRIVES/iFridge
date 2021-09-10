@@ -40,7 +40,7 @@ function App() {
 
         </Route>
         <Route exact path="/home">
-          {loading?<a></a>:<Home user={data?.self}></Home>}
+          {loading?<a></a>:<Home user={data?.self} id={data?.self.id}></Home>}
         </Route>
 
         </Switch>

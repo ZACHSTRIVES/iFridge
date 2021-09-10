@@ -8,16 +8,7 @@
 // ====================================================
 
 export interface UserFridges_userFridges_fridge_foods {
-  __typename: "Food";
-  id: number;
-  fridgeID: number;
-  originQTY: number;
-  currentQTY: number;
-  type: string;
-  notes: string;
-  expireDate: any;
-  modified: any;
-  created: any;
+  __typename: "UserFridge";
 }
 
 export interface UserFridges_userFridges_fridge_userFridges_user {
@@ -58,5 +49,5 @@ export interface UserFridges {
 }
 
 export interface UserFridgesVariables {
-  id: string;
+  id?: number | null;
 }

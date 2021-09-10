@@ -3,7 +3,7 @@ import * as fragments from "./fragments";
 
 
 export const USERFRIDGE = gql`
-    query UserFridges($id: ID!) {
+    query UserFridges($id: Int) {
         userFridges(id: $id) {
             ...userFridgeFields
             fridge{
@@ -28,7 +28,7 @@ export const USERFRIDGE = gql`
 `
 
 export const USER = gql`
-    query User($id: ID!) {
+    query User($id: ID) {
         user(id: $id){
             ...userFields
         }
@@ -56,6 +56,7 @@ export const SELF = gql`
     
                 }
             }
+           
         }
     }
     ${fragments.USERFRIDGE}

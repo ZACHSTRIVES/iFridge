@@ -1,10 +1,15 @@
 import React from 'react'
+import { fridgeFields } from '../../api/__generated__/fridgeFields';
 
 
-const fridgeTab=()=>{
+export interface FridgeTapProps {
+    fridge?: fridgeFields;
+}
+
+const fridgeTab: React.FC<FridgeTapProps> = ({ fridge }) => {
     return(
         <div className="fridgeTab">
-             dada
+             {fridge?.name}
         </div>
 
     )
