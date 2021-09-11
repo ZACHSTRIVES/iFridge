@@ -8,10 +8,12 @@ import { AddUserFridge } from '../../api/__generated__/AddUserFridge';
 import { ADD_USERFRIDGE } from '../../api/mutations';
 import { useMutation } from "@apollo/client";
 import Alert from '@material-ui/lab/Alert';
+import DeleteFridgemate from "./deleteFridgemate";
 
 export interface EditFridgemateProps {
     users?: any
     fridgeID?: String
+    ID?: String
 }
 
 
@@ -33,13 +35,16 @@ const useStyles = makeStyles({
     }
 });
 
-const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID }) => {
+const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [addOpen, setAddOpen] = React.useState(false);
     const [userID, setUserID] = React.useState("");
     const [addUserFridge] = useMutation<AddUserFridge>(ADD_USERFRIDGE);
     const [showAddError, setShowAddError] = React.useState(false);
+    const [showDelete, setShowDelete] = React.useState(false);
+    const [deleteName, setDeleteName] = React.useState("");
+    const [deleteID, setDeleteID] = React.useState("");
 
     const handleClose = () => {
         setOpen(false);
@@ -57,12 +62,28 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID }) => {
         setAddOpen(false);
         setShowAddError(false);
     };
+    const handleShowDelete = (dName?: any, dId?: any) => {
+        if (dName) {
+            setDeleteName(dName);
+        }
+        if (dId) {
+            setDeleteID(dId);
+        }
+
+        setShowDelete(true);
+    };
+    const handleCloseDelete = () => {
+        setDeleteID("");
+        setDeleteName("");
+        setShowDelete(false);
+    };
+
+
 
     const handleSubmit = async () => {
         if (userID === "") {
             return
         }
-
         try {
             await addUserFridge({
                 variables: {
@@ -85,14 +106,15 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID }) => {
                 <DialogTitle id="simple-dialog-title">Edit Fridgemate</DialogTitle>
                 <List>
                     {users.map((u: any) => (
-                        <ListItem button>
+
+                        <ListItem button onClick={()=>{handleShowDelete(u.user.name, u.user.id)}}>
                             <ListItemAvatar>
                                 <Avatar src={u.user.imageURI}>
-
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={u.user.name} />
+                            <ListItemText primary={u.user.name} secondary="Remove" />
                         </ListItem>
+
                     ))}
 
                     <ListItem autoFocus button onClick={handleAddOpen}>
@@ -123,7 +145,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID }) => {
                         fullWidth
                     />
 
-                    {showAddError?<Alert severity="error">The user does not exist! Or already added!</Alert>:<a></a>}
+                    {showAddError ? <Alert severity="error">The user does not exist! Or already added!</Alert> : <a></a>}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleAddClose} color="primary">
@@ -134,6 +156,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID }) => {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <DeleteFridgemate fridgeID={fridgeID} userID={deleteID} name={deleteName} show={showDelete} handleClose={handleCloseDelete}></DeleteFridgemate>
 
         </div>
 
