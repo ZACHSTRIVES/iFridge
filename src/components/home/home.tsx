@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ user,id }) => {
     return (
         <section className="homeContainer">
             <SideNav user={user}></SideNav>
-            <Content></Content>
+            <Content fridge={user?.userFridges[0].fridge}></Content>
         </section>
     )
 }
