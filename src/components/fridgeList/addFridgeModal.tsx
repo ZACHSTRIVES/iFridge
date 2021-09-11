@@ -14,72 +14,72 @@ import { useMutation } from '@apollo/client';
 import { AddFridge_addFridge } from '../../api/__generated__/AddFridge';
 
 export interface addFridgeModalPropos {
-    isShow:boolean
-    controlModal:any
-    userID?:any
+  isShow: boolean
+  controlModal: any
+  userID?: any
 
 }
 
-const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow,controlModal,userID }) => {
-    const [fridgeName, setFridgeName] = useState<string>("");
-    const [addFridge]=useMutation<AddFridge>(ADD_FRIDGE);
-    const [addUserFridge]=useMutation<AddUserFridge>(ADD_USERFRIDGE);
+const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow, controlModal, userID }) => {
+  const [fridgeName, setFridgeName] = useState<string>("");
+  const [addFridge] = useMutation<AddFridge>(ADD_FRIDGE);
+  const [addUserFridge] = useMutation<AddUserFridge>(ADD_USERFRIDGE);
 
-    const handleSubmit = async() =>{
-        if(fridgeName===""){
-            return
-        }
-
-        try{
-            var {data}= await addFridge({
-                variables:{
-                    name:fridgeName,
-                    ownerId:userID
-                }
-
-            })
-            if(data!=null){
-                await addUserFridge({
-                    variables:{
-                        userId:userID,
-                        fridgeId:data.addFridge.id
-                    }
-                })
-
-            }  
-            controlModal();
-        }catch(e){
-            console.log("添加Fridge时报错：",e)
-        }
+  const handleSubmit = async () => {
+    if (fridgeName === "") {
+      return
     }
 
-    return(
-        <Dialog open={isShow}  aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Fridge</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
+    try {
+      var { data } = await addFridge({
+        variables: {
+          name: fridgeName,
+          ownerId: userID
+        }
+
+      })
+      if (data != null) {
+        await addUserFridge({
+          variables: {
+            userId: userID,
+            fridgeId: data.addFridge.id
+          }
+        })
+
+      }
+      controlModal();
+    } catch (e) {
+      console.log("添加Fridge时报错：", e)
+    }
+  }
+
+  return (
+    <Dialog open={isShow} aria-labelledby="form-dialog-title">
+      <DialogTitle id="form-dialog-title">Add Fridge</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
           Add your new fridge here!
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Fridge Name"
-            value={fridgeName}
-            onChange={e=>setFridgeName(e.target.value)}
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={controlModal} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} color="primary">
-            Add
-          </Button>
-        </DialogActions>
-      </Dialog>
-    )
+        </DialogContentText>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Fridge Name"
+          value={fridgeName}
+          onChange={e => setFridgeName(e.target.value)}
+          fullWidth
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={controlModal} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={handleSubmit} color="primary">
+          Add
+        </Button>
+      </DialogActions>
+    </Dialog>
+  )
 }
 
 

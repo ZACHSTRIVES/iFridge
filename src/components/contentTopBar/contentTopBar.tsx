@@ -7,27 +7,34 @@ import EditFridgemate from "./editFridgemate";
 export interface topBarProps {
     fridgeName?: String
     users?: any
-    fridgeID?:String
+    fridgeID?: String
+    ID?:String
 }
 
 
-const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID }) => {
+const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID }) => {
+    const numOfFridgemate = users.length;
+
 
     return (
         <div className="contentTopBar">
             <div className="fridgeTitle">{fridgeName}</div>
             <div className="colleaguesBox">
-                <AvatarGroup>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                <AvatarGroup max={3}>
+                    {users.map((u: any) => (<Avatar alt={u.user.name} src={u.user.imageURI} />))}
+
+
                 </AvatarGroup>
-                <div className="textBox">
-                    <p>+2 fridgemate</p>
+                {numOfFridgemate === 1 ? <div className="textBox">
+                    <p>Only you use</p>
+                    <p>this fridge</p>
+                </div> : <div className="textBox">
+                    <p>{numOfFridgemate} fridgemates</p>
                     <p>share this</p>
-                </div>
-                <EditFridgemate users={users} fridgeID={fridgeID}></EditFridgemate>
-                
+                </div>}
+
+                <EditFridgemate users={users} fridgeID={fridgeID} ID={ID}></EditFridgemate>
+
             </div>
 
 
