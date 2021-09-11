@@ -2,16 +2,16 @@ import React from "react"
 import './contentTopBar.css'
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import EdoyColleague from './editColleague'
-import EditColleague from "./editColleague";
+import EditFridgemate from "./editFridgemate";
 
 export interface topBarProps {
     fridgeName?: String
     users?: any
+    fridgeID?:String
 }
 
 
-const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users }) => {
+const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID }) => {
 
     return (
         <div className="contentTopBar">
@@ -23,10 +23,10 @@ const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users }) => {
                     <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
                 </AvatarGroup>
                 <div className="textBox">
-                    <p>+2 colleagues</p>
+                    <p>+2 fridgemate</p>
                     <p>share this</p>
                 </div>
-                <EditColleague></EditColleague>
+                <EditFridgemate users={users} fridgeID={fridgeID}></EditFridgemate>
                 
             </div>
 

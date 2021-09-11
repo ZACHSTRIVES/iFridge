@@ -11,7 +11,7 @@ const Content: React.FC<ContentProps> = ({ fridge }) => {
 
     return (
         <div className="content">
-            <ContentTopBar fridgeName={fridge?.name} users={fridge?.userFridges}></ContentTopBar>
+            <ContentTopBar fridgeName={fridge?.name} users={fridge?.userFridges} fridgeID={fridge?.id}></ContentTopBar>
             
         </div>
     )
