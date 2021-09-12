@@ -1,8 +1,8 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import React from "react";
-import { DeleteUserFridge } from "../../api/__generated__/DeleteUserFridge";
-import { DELETE_USERFRIDGE } from "../../api/mutations";
-
+import { RemoveFridgemate } from "../../api/__generated__/RemoveFridgemate";
+import { REMOVE_FRIDGEMATE } from "../../api/mutations";
+import { useMutation } from "@apollo/client";
 
 export interface DeleteFridgeMateProps {
     fridgeID?: String
@@ -17,24 +17,24 @@ export interface DeleteFridgeMateProps {
 
 
 const DeleteFridgemate: React.FC<DeleteFridgeMateProps> = ({ fridgeID, userID, name, show, handleClose }) => {
-    // // const [deleteUserFridge] = useMutation<DeleteUserFridge>(ADD_USERFRIDGE);
+    const [removeFridgemate] = useMutation<RemoveFridgemate>(REMOVE_FRIDGEMATE);
 
-    // const handleDelete = async () => {
-    //     if (userID === "") {
-    //         return
-    //     }
-    //     try {
-    //         await addUserFridge({
-    //             variables: {
-    //                 userId: userID,
-    //                 fridgeId: fridgeID
-    //             }
-    //         })
-    //         handleAddClose();
-    //     } catch (e) {
-    //         setShowAddError(true);
-    //     }
-    // }
+    const handleDelete = async () => {
+        if (userID === "") {
+            return
+        }
+        try {
+            await removeFridgemate({
+                variables: {
+                    userId: userID,
+                    fridgeId: fridgeID
+                }
+            })
+            handleClose();
+        } catch (e) {
+            // setShowAddError(true);
+        }
+    }
 
 
     return (
@@ -54,7 +54,7 @@ const DeleteFridgemate: React.FC<DeleteFridgeMateProps> = ({ fridgeID, userID, n
                 <Button onClick={handleClose} color="primary">
                     Cancel
                 </Button>
-                <Button onClick={handleClose} color="primary" autoFocus>
+                <Button onClick={handleDelete} color="primary" autoFocus>
                     Remove
                 </Button>
             </DialogActions>
