@@ -15,10 +15,18 @@ export interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ user,id }) => {
 
+    const [currentFridge,setCurrentFridge] = React.useState<any>(user?.userFridges.length==0?null:user?.userFridges[0].fridge)
+    function changeFridge(fridge:any){
+        setCurrentFridge(fridge)
+        console.log(fridge)
+    }
+
+    
+
     return (
         <section className="homeContainer">
-            <SideNav user={user}></SideNav>
-            <Content fridge={user?.userFridges[0].fridge}></Content>
+            <SideNav user={user} changeFridge={changeFridge}></SideNav>
+            <Content fridge={currentFridge}></Content>
         </section>
     )
 }

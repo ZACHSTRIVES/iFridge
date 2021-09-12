@@ -6,11 +6,12 @@ import AddFridgeModal from './addFridgeModal';
 
 export interface FridgeListProps {
     user?: Self_self;
+    changeFridge:any
 }
 
 
 
-const FridgeList: React.FC<FridgeListProps> = ({ user }) => {
+const FridgeList: React.FC<FridgeListProps> = ({ user,changeFridge }) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -26,7 +27,9 @@ const FridgeList: React.FC<FridgeListProps> = ({ user }) => {
             <div className="fridgeList">
                 {
                     user?.userFridges.map((uf) => (
-                        <FridgeTab fridge={uf.fridge}></FridgeTab>
+                    
+                        <FridgeTab fridge={uf.fridge} changeFridge={changeFridge}></FridgeTab>
+                     
                     ))
                 }
                 <div className="fridgeTab" onClick={handleClickOpen}>+</div>

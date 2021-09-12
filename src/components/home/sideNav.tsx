@@ -6,13 +6,14 @@ import { useRadioGroup } from "@material-ui/core";
 
 export interface SideNavProps {
     user?: Self_self;
+    changeFridge:any;
 }
 
-const SideNav: React.FC<SideNavProps> = ({ user }) => {
+const SideNav: React.FC<SideNavProps> = ({ user,changeFridge }) => {
     return (
         <div className="nav glass-blur">
            <ProfileAvater url={user?.imageURI} nickName={user?.gitHub} name={user?.name}></ProfileAvater>
-           <FridgeList user={user}></FridgeList>
+           <FridgeList user={user} changeFridge={changeFridge}></FridgeList>
            
         </div>
     )
