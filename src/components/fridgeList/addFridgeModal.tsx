@@ -11,16 +11,17 @@ import { ADD_FRIDGE } from '../../api/mutations';
 import { AddUserFridge } from '../../api/__generated__/AddUserFridge';
 import { ADD_USERFRIDGE } from '../../api/mutations';
 import { useMutation } from '@apollo/client';
-import { AddFridge_addFridge } from '../../api/__generated__/AddFridge';
+
 
 export interface addFridgeModalPropos {
   isShow: boolean
   controlModal: any
   userID?: any
+  addNewFridgeToLocal:any;
 
 }
 
-const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow, controlModal, userID }) => {
+const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow, controlModal, userID,addNewFridgeToLocal }) => {
   const [fridgeName, setFridgeName] = useState<string>("");
   const [addFridge] = useMutation<AddFridge>(ADD_FRIDGE);
   const [addUserFridge] = useMutation<AddUserFridge>(ADD_USERFRIDGE);
@@ -39,12 +40,13 @@ const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow, controlModal, 
 
       })
       if (data != null) {
-        await addUserFridge({
+        var res= await addUserFridge({
           variables: {
             userId: userID,
             fridgeId: data.addFridge.id
           }
         })
+        addNewFridgeToLocal(res.data?.addUserFridge)
 
       }
       controlModal();

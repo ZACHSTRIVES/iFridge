@@ -58,5 +58,5 @@ export interface UserFridges {
 }
 
 export interface UserFridgesVariables {
-  id?: number | null;
+  id: string;
 }
