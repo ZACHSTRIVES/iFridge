@@ -54,6 +54,7 @@ export const ADD_FRIDGE = gql`
   ) {
     addFridge(input: { name: $name, ownerId: $ownerId }) {
       ...fridgeFields
+      
     }
   }
   ${fragments.FRIDGE}
@@ -86,9 +87,27 @@ export const ADD_USERFRIDGE = gql`
   ) {
     addUserFridge(input: { userId: $userId, fridgeId: $fridgeId }) {
       ...userFridgeFields
+      fridge{
+        ...fridgeFields
+        foods{
+            ...foodFields
+        }
+        userFridges{
+            ...userFridgeFields
+            user{
+                ...userFields
+            }
+        }
+
+    }
+      
     }
   }
   ${fragments.USERFRIDGE}
+    ${fragments.FRIDGE}
+    ${fragments.FOOD}
+    ${fragments.USER}
+  
 `;
 
 

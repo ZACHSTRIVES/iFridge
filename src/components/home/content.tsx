@@ -8,6 +8,7 @@ export interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ fridge }) => {
+    console.log(fridge)
 
     return (
         <div className="content">

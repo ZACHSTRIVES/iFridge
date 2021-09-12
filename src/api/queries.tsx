@@ -3,8 +3,11 @@ import * as fragments from "./fragments";
 
 
 export const USERFRIDGE = gql`
-    query UserFridges($id: Int) {
-        userFridges(id: $id) {
+    query UserFridges($id: String!) {
+        userFridges(
+            input:{
+                userId:$id
+            }) {
             ...userFridgeFields
             fridge{
                 ...fridgeFields

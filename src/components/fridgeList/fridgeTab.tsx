@@ -4,7 +4,8 @@ import { fridgeFields } from '../../api/__generated__/fridgeFields';
 
 export interface FridgeTapProps {
     fridge?: fridgeFields;
-    changeFridge:any
+    changeFridge:any;
+    
 }
 
 const fridgeTab: React.FC<FridgeTapProps> = ({ fridge,changeFridge }) => {
