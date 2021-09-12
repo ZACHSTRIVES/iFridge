@@ -14,19 +14,26 @@ export interface HomeProps {
 
 
 const Home: React.FC<HomeProps> = ({ user,id }) => {
+    
 
-    const [currentFridge,setCurrentFridge] = React.useState<any>(user?.userFridges.length==0?null:user?.userFridges[0].fridge)
+    const [currentFridge,setCurrentFridge] = React.useState<any>(user?.userFridges.length===0?null:user?.userFridges[0].fridge)
+    const [userFridges,setUserFridges] = React.useState<any>(user?.userFridges)
+
     function changeFridge(fridge:any){
         setCurrentFridge(fridge)
-        console.log(fridge)
+    }
+
+    function refatchData(){
+
     }
 
     
 
     return (
         <section className="homeContainer">
-            <SideNav user={user} changeFridge={changeFridge}></SideNav>
-            <Content fridge={currentFridge}></Content>
+            <SideNav user={user} changeFridge={changeFridge} userFridges={userFridges}></SideNav>
+            {currentFridge?<Content fridge={currentFridge}></Content>:<p>You don't have one yet, build one!</p>}
+            
         </section>
     )
 }

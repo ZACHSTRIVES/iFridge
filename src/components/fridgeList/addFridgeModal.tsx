@@ -11,7 +11,7 @@ import { ADD_FRIDGE } from '../../api/mutations';
 import { AddUserFridge } from '../../api/__generated__/AddUserFridge';
 import { ADD_USERFRIDGE } from '../../api/mutations';
 import { useMutation } from '@apollo/client';
-import { AddFridge_addFridge } from '../../api/__generated__/AddFridge';
+
 
 export interface addFridgeModalPropos {
   isShow: boolean
