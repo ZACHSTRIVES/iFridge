@@ -10,13 +10,14 @@ export interface DeleteFridgeMateProps {
     name?: String
     show: boolean
     handleClose: any
+    updateFridgemates:any
 
 }
 
 
 
 
-const DeleteFridgemate: React.FC<DeleteFridgeMateProps> = ({ fridgeID, userID, name, show, handleClose }) => {
+const DeleteFridgemate: React.FC<DeleteFridgeMateProps> = ({ fridgeID, userID, name, show, handleClose, updateFridgemates }) => {
     const [removeFridgemate] = useMutation<RemoveFridgemate>(REMOVE_FRIDGEMATE);
 
     const handleDelete = async () => {
@@ -24,12 +25,16 @@ const DeleteFridgemate: React.FC<DeleteFridgeMateProps> = ({ fridgeID, userID, n
             return
         }
         try {
-            await removeFridgemate({
+            const {data} = await removeFridgemate({
                 variables: {
                     userId: userID,
                     fridgeId: fridgeID
                 }
             })
+
+            updateFridgemates(data?.removeFridgemate);
+
+
             handleClose();
         } catch (e) {
             // setShowAddError(true);

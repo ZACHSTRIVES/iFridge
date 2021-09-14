@@ -68,3 +68,20 @@ export const SELF = gql`
     ${fragments.USER}
 
 `
+
+
+export const FRIDGEMATES = gql`
+    query FridgeMates($id: String!) {
+        fridgeMates(
+            input:{
+                fridgeID:$id
+            }) {
+            ...userFridgeFields
+            user{
+                ...userFields
+            }
+        }
+    }
+    ${fragments.USERFRIDGE}
+    ${fragments.USER}
+`

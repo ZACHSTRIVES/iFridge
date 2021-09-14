@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: AddUserFridge
+// GraphQL query operation: FridgeMates
 // ====================================================
 
-export interface AddUserFridge_addUserFridge_user {
+export interface FridgeMates_fridgeMates_user {
   __typename: "User";
   id: string;
   name: string;
@@ -15,18 +15,17 @@ export interface AddUserFridge_addUserFridge_user {
   imageURI: string;
 }
 
-export interface AddUserFridge_addUserFridge {
+export interface FridgeMates_fridgeMates {
   __typename: "UserFridge";
   userId: string;
   fridgeId: string;
-  user: AddUserFridge_addUserFridge_user;
+  user: FridgeMates_fridgeMates_user;
 }
 
-export interface AddUserFridge {
-  addUserFridge: AddUserFridge_addUserFridge;
+export interface FridgeMates {
+  fridgeMates: FridgeMates_fridgeMates[];
 }
 
-export interface AddUserFridgeVariables {
-  userId: string;
-  fridgeId: string;
+export interface FridgeMatesVariables {
+  id: string;
 }
