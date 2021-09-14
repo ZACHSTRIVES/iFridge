@@ -14,6 +14,7 @@ export interface EditFridgemateProps {
     users?: any
     fridgeID?: String
     ID?: String
+    updateFridegmates: any
 }
 
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
     }
 });
 
-const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID }) => {
+const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, updateFridegmates }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [addOpen, setAddOpen] = React.useState(false);
@@ -85,16 +86,24 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID }) 
             return
         }
         try {
-            await addUserFridge({
+            const {data} = await addUserFridge({
                 variables: {
                     userId: userID,
                     fridgeId: fridgeID
                 }
             })
+            addFridgemates(data?.addUserFridge);
             handleAddClose();
         } catch (e) {
             setShowAddError(true);
         }
+    }
+
+    const addFridgemates = (fm:any)=>{
+        var temp = [...users]
+        temp.push(fm)
+        updateFridegmates(temp)
+
     }
 
 
@@ -107,7 +116,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID }) 
                 <List>
                     {users.map((u: any) => (
 
-                        <ListItem button onClick={()=>{handleShowDelete(u.user.name, u.user.id)}}>
+                        <ListItem button onClick={() => { handleShowDelete(u.user.name, u.user.id) }}>
                             <ListItemAvatar>
                                 <Avatar src={u.user.imageURI}>
                                 </Avatar>
@@ -156,7 +165,17 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID }) 
                     </Button>
                 </DialogActions>
             </Dialog>
-            <DeleteFridgemate fridgeID={fridgeID} userID={deleteID} name={deleteName} show={showDelete} handleClose={handleCloseDelete}></DeleteFridgemate>
+
+            <DeleteFridgemate
+                fridgeID={fridgeID}
+                userID={deleteID}
+                name={deleteName}
+                show={showDelete}
+                handleClose={handleCloseDelete}
+                updateFridgemates={updateFridegmates}>
+                
+
+            </DeleteFridgemate>
 
         </div>
 

@@ -87,25 +87,13 @@ export const ADD_USERFRIDGE = gql`
   ) {
     addUserFridge(input: { userId: $userId, fridgeId: $fridgeId }) {
       ...userFridgeFields
-      fridge{
-        ...fridgeFields
-        foods{
-            ...foodFields
-        }
-        userFridges{
-            ...userFridgeFields
-            user{
-                ...userFields
-            }
-        }
-
-    }
+      user{
+        ...userFields
+      }
       
     }
   }
   ${fragments.USERFRIDGE}
-    ${fragments.FRIDGE}
-    ${fragments.FOOD}
     ${fragments.USER}
   
 `;
@@ -195,7 +183,11 @@ export const REMOVE_FRIDGEMATE = gql`
       }
     ) {
       ...userFridgeFields
+      user{
+        ...userFields
+      }
     }
   }
   ${fragments.USERFRIDGE}
+  ${fragments.USER}
 `;
