@@ -5,7 +5,7 @@ import { REMOVE_FRIDGEMATE } from "../../api/mutations";
 import { useMutation } from "@apollo/client";
 
 export interface DeleteFridgeMateProps {
-    fridgeID?: String
+    fridgeID?: any
     userID?: String
     name?: String
     show: boolean

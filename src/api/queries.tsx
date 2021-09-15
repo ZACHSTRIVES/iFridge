@@ -2,33 +2,7 @@ import { gql } from "@apollo/client";
 import * as fragments from "./fragments";
 
 
-export const USERFRIDGE = gql`
-    query UserFridges($id: String!) {
-        userFridges(
-            input:{
-                userId:$id
-            }) {
-            ...userFridgeFields
-            fridge{
-                ...fridgeFields
-                foods{
-                    ...foodFields
-                }
-                userFridges{
-                    ...userFridgeFields
-                    user{
-                        ...userFields
-                    }
-                }
 
-            }
-        }
-    }
-    ${fragments.USERFRIDGE}
-    ${fragments.FRIDGE}
-    ${fragments.FOOD}
-    ${fragments.USER}
-`
 
 export const USER = gql`
     query User($id: ID) {
@@ -74,7 +48,7 @@ export const FRIDGEMATES = gql`
     query FridgeMates($id: String!) {
         fridgeMates(
             input:{
-                fridgeID:$id
+                fridgeId:$id
             }) {
             ...userFridgeFields
             user{
@@ -82,6 +56,59 @@ export const FRIDGEMATES = gql`
             }
         }
     }
+    ${fragments.USERFRIDGE}
+    ${fragments.USER}
+`
+
+export const USERFRIDGE = gql`
+    query UserFridges($id: String!) {
+        userFridges(
+            input:{
+                userId:$id
+            }) {
+            ...userFridgeFields
+            fridge{
+                ...fridgeFields
+                foods{
+                    ...foodFields
+                }
+                userFridges{
+                    ...userFridgeFields
+                    user{
+                        ...userFields
+                    }
+                }
+
+            }
+        }
+    }
+    ${fragments.USERFRIDGE}
+    ${fragments.FRIDGE}
+    ${fragments.FOOD}
+    ${fragments.USER}
+`
+
+export const FRIDGE = gql`
+    query Fridge($fridgeId: String!) {
+        fridge(
+            input:{
+                fridgeId:$fridgeId
+            }) {
+                ...fridgeFields
+                foods{
+                    ...foodFields
+                }
+                userFridges{
+                    ...userFridgeFields
+                    user{
+                        ...userFields
+                    }
+                }   
+        }
+    }
+   
+    ${fragments.FRIDGE}
+    ${fragments.FOOD}
     ${fragments.USERFRIDGE}
     ${fragments.USER}
 `

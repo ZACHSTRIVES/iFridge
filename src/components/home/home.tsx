@@ -22,6 +22,8 @@ const Home: React.FC<HomeProps> = ({ user, id }) => {
     const [currentFridge, setCurrentFridge] = React.useState<any>(user?.userFridges.length === 0 ? null : user?.userFridges[0].fridge);
     const [userFridges, setUserFridges] = React.useState<any>(user?.userFridges);
 
+
+
     function changeFridge(fridge: any) {
         setCurrentFridge(fridge)
     }
@@ -29,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ user, id }) => {
     return (
         <section className="homeContainer">
             <SideNav user={user} changeFridge={changeFridge} userFridges={userFridges} currentFridgeId={currentFridge?.id}></SideNav>
-            {currentFridge ? <Content fridge={currentFridge}></Content> : <p>You don't have one yet, build one!</p>}
+            {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id}></Content> : <p>You don't have one yet, build one!</p>}
 
         </section>
     )

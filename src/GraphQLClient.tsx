@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-    uri: 'https://ifridge-backend.azurewebsites.net/graphql/',
+  uri: 'http://localhost:60812/graphql/',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -19,8 +19,18 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const graphQLClient = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache()
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          fridge: {
+            merge:true
+          }
+        }
+      }
+    }
+  })
 });
 
 export default graphQLClient;
