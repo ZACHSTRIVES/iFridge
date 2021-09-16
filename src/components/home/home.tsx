@@ -4,7 +4,7 @@ import { Self_self } from "../../api/__generated__/Self";
 import SideNav from "./sideNav";
 import Content from "./content";
 import { useQuery } from '@apollo/client';
-import { USERFRIDGE } from '../../api/queries';
+import { USERFRIDGE } from '../../api/queries'; 
 import { UserFridges } from '../../api/__generated__/UserFridges';
 
 
