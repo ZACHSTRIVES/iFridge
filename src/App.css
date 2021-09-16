@@ -1,74 +1,68 @@
-
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300,500");
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:300,700");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300");
 @import url("https://fonts.googleapis.com/css?family=Lato:300,700|Prata");
 @import url("https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i");
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:600&display=swap');
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 300;
-  font-size: medium;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    font-size: medium;
 }
-.App{
-  width: 100%;
-  height: 100%;
-  
+
+.App {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(90deg, #c1e1e7, #fee5cb, #f8e9e6, #76b4d6,#c1e1e7);
-  background-size: 1400% 300%;
-  animation: dynamics 20s ease infinite;
-  -webkit-animation: dynamics 20s ease infinite;
-  -moz-animation: dynamics 20s ease infinite;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #c1e1e7, #fee5cb, #f8e9e6, #76b4d6, #c1e1e7);
+    background-size: 1400% 300%;
+    animation: dynamics 20s ease infinite;
+    -webkit-animation: dynamics 20s ease infinite;
+    -moz-animation: dynamics 20s ease infinite;
 }
 
 @keyframes dynamics {
-  0% {
-      background-position: 0% 0%;
-  }
-
-  50% {
-      background-position: 50% 100%;
-  }
-
-  100% {
-      background-position: 100% 0%;
-  }
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
 }
-
 
 section.container {
-  background-color: white;
-  border-radius: 24px;
-  width: 80%;
-  height: 80%;
-  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.12);
-  margin: 1.5rem auto;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  justify-self: center;
-  align-self: center;
-  
-}
-
-@media only screen and (max-width: 600px)  {
-  section.container {
-    flex-direction: column;
-    height: 95%;
+    background-color: white;
+    border-radius: 24px;
     width: 90%;
-  }
+    height: 90%;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.12);
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    justify-self: center;
+    align-self: center;
 }
 
-.flex{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media only screen and (max-width: 600px) {
+    section.container {
+        flex-direction: column;
+        height: 95%;
+        width: 90%;
+    }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

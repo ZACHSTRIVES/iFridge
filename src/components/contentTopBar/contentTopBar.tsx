@@ -3,29 +3,23 @@ import './contentTopBar.css'
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import EditFridgemate from "./editFridgemate";
-import { FRIDGEMATES } from "../../api/queries";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { FridgeMatesVariables } from "../../api/__generated__/fridgeMates";
 
 export interface topBarProps {
     fridgeName?: String
     users?: any
-    fridgeID?: String
+    fridgeID?: any
     ID?:String
+    refetch:any
 }
 
 
-const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID }) => {
+const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,refetch }) => {
     
-    const [fridgemates,setFridgemates] = React.useState(users)
-    const numOfFridgemate = fridgemates.length;
+    const numOfFridgemate = users.length;
 
     const updateFridgemates = (uf:any)=>{
-        setFridgemates(uf);
+        refetch()
     }
-
-  
-
 
 
     return (
@@ -33,7 +27,7 @@ const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID }
             <div className="fridgeTitle">{fridgeName}</div>
             <div className="colleaguesBox">
                 <AvatarGroup max={3}>
-                    {fridgemates.map((u: any) => (<Avatar alt={u.user.name} src={u.user.imageURI} />))}
+                    {users.map((u: any) => (<Avatar alt={u.user.name} src={u.user.imageURI} />))}
 
 
                 </AvatarGroup>
@@ -45,7 +39,7 @@ const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID }
                     <p>share this</p>
                 </div>}
 
-                <EditFridgemate users={fridgemates} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>
+                <EditFridgemate users={users} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>
 
             </div>
 
