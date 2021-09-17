@@ -6,7 +6,7 @@ export interface SigninButtonProps {
 };
 
 const CLIENT_ID = "e126eae4113858542c6f";
-const REDIRECT_URI = "http://localhost:3000/";
+const REDIRECT_URI = "https://i-fridge.netlify.app/";
 
 const SigninButton = () =>
     <div className="signinGithub">

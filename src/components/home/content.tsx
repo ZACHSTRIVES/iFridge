@@ -25,6 +25,9 @@ const Content: React.FC<ContentProps> = ({ fridge,fridgeId }) => {
              }
              <div className="subTitle">Eat Them Today！</div>
             <SlideFoodList></SlideFoodList>
+            <div className="subContiner">
+
+            </div>
         </div>
     )
 

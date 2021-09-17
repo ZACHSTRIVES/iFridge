@@ -32,6 +32,7 @@ const Home: React.FC<HomeProps> = ({ user, id }) => {
         <section className="homeContainer">
             <SideNav user={user} changeFridge={changeFridge} userFridges={userFridges} currentFridgeId={currentFridge?.id}></SideNav>
             {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id}></Content> : <p>You don't have one yet, build one!</p>}
+            
 
         </section>
     )
