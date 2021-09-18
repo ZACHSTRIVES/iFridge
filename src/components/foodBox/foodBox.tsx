@@ -1,6 +1,6 @@
 import React from "react";
 import './food.css'
-import image from '../../static/foods/MEATS/BEEF.png'
+import image from '../../static/foods/Meat/BEEF.png'
 import { Box, LinearProgress } from "@material-ui/core";
 
 
