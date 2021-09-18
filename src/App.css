@@ -53,16 +53,19 @@ section.container {
     align-self: center;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
     section.container {
         flex-direction: column;
         height: 95%;
         width: 90%;
     }
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .App {
+        align-items: baseline;
+    }
 }

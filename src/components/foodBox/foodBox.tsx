@@ -14,13 +14,10 @@ const FoodBox = () => {
             </div>
             <img className="foodBox-foodImg" src={image}></img>
             <div className="foodBox-progress">
-            <Box sx={{ width: '100%' }}>
-                <LinearProgress variant="buffer" value={50} valueBuffer={60} />
-            </Box>
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress variant="buffer" value={50} valueBuffer={60} />
+                </Box>
             </div>
-
-
-
         </div>
     )
 }
