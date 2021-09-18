@@ -1,33 +1,52 @@
-.fridgeTitle{
+.fridgeTitle {
     font-size: xx-large;
     font-weight: bolder;
-      
 }
 
-.contentTopBar{
+.contentTopBar {
     margin-top: 10px;
-    width:100%;
-   
+    width: 100%;
     display: flex;
     justify-self: center;
     justify-content: space-between;
     align-self: center;
-
 }
 
-.colleaguesBox{
+.colleaguesBox {
     display: flex;
     justify-self: center;
     align-self: center;
-    padding:5px;
+    padding: 5px;
 }
 
-.textBox{
+.textBox {
     margin-left: 5px;
     margin-right: 15px;
     font-size: x-small;
 }
 
-.m-l-sm{
+.m-l-sm {
     margin-left: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .contentTopBar {
+        flex-direction: column;
+    }
+    .colleaguesBox {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .fridgeTitle {
+        text-align: center;
+    }
+    .colleaguesBox .textBox {
+        display: none;
+    }
+    .colleaguesBox .MuiButton-label {
+        display: none;
+    }
+    .colleaguesBox .MuiButton-text:after {
+        content: 'Edit';
+    }
 }

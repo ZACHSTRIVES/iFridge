@@ -6,8 +6,7 @@ section.homeContainer {
     margin: 1.5rem auto;
     /* padding: 1.5rem; */
     box-sizing: border-box;
-    justify-self: center;
-    align-self: center;
+    justify-content: center;
     display: flex;
 }
 
@@ -40,7 +39,29 @@ section.homeContainer {
 }
 
 .subContiner {
+    margin-top: 10px;
     width: 100%;
-    height: auto;
+    height: calc(100% - 261px);
     background-color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    .homeContainer {
+        flex-direction: column;
+    }
+    .nav {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    .content {
+        width: 100%;
+        border-radius: 0 0 24px 24px;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    section.homeContainer {
+        width: calc(100% - 24px);
+        height: auto;
+    }
 }
