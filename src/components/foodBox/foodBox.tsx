@@ -6,28 +6,19 @@ import { Box, LinearProgress } from "@material-ui/core";
 export interface FoodBoxProps {
     food: any
     refetch: any
-}
-function getDiffDate(targetDate: any) {
-    let date1 = new Date(targetDate);
-    let date2 = new Date();
-    date1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
-    date2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
-    console.log(date1, date2)
-    const diff = date1.getTime() - date2.getTime();
-    const diffDate = diff / (24 * 60 * 60 * 1000) - 1;
-    return diffDate;
+    expireDate: number
 }
 
-const FoodBox: React.FC<FoodBoxProps> = ({ food, refetch }) => {
+
+const FoodBox: React.FC<FoodBoxProps> = ({ food, refetch,expireDate }) => {
     const imge = require(`../../static/foods/${food.type}/${food.name}.png`).default
-    const expireDate = getDiffDate(food.expireDate);
-    console.log(expireDate)
+
 
     return (
         <div className="foodBox">
             <div className="foodBox-title">{food.name}</div>
 
-            {() => {
+            {(() => {
                 if (expireDate === 0) {
                     return (
                         <div className="foodBox-desc">
@@ -35,12 +26,31 @@ const FoodBox: React.FC<FoodBoxProps> = ({ food, refetch }) => {
                         </div>
                     )
                 } else if (expireDate === -1) {
-                    <div className="foodBox-desc">
-                        Expired yesterday
+                    return (
+                        <div className="foodBox-desc">
+                            Expired yesterday
+                        </div>
+                    )
+                } else if (expireDate < -1) {
+                    return (
+                        <div className="foodBox-desc">
+                            Expired {Math.abs(expireDate)} days
+                        </div>
+                    )
+                } else if (expireDate === 1) {
+                    return (<div className="foodBox-desc">
+                        Expire tomorrow
+                    </div>)
+                } else if (expireDate > 1) {
+                    return (<div className="foodBox-desc">
+                        Expire in {expireDate} days
                     </div>
 
+                    )
+
+
                 }
-            }}
+            })()}
 
             <img className="foodBox-foodImg" src={imge}></img>
             <div className="foodBox-progress">
