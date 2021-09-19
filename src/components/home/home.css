@@ -42,7 +42,7 @@ section.homeContainer {
     margin-top: 10px;
     width: 100%;
     height: calc(100% - 261px);
-    background-color: black;
+    display: flex;
 }
 
 @media only screen and (max-width: 600px) {
@@ -64,4 +64,10 @@ section.homeContainer {
         width: calc(100% - 24px);
         height: auto;
     }
+}
+
+.foodTable {
+    height: 100%;
+    width: 60%;
+    overflow-y: auto;
 }

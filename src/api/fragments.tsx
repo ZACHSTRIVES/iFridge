@@ -23,6 +23,7 @@ export const FOOD = gql`
     fragment foodFields on Food {
         id
         fridgeID
+        name
         originQTY
         currentQTY
         type

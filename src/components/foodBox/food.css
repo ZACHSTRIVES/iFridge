@@ -13,7 +13,7 @@
 
 .foodBox {
     min-width: 120px;
-    height: 100%;
+    height: 98%;
     margin-right: 5px;
     border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.10);
@@ -21,6 +21,7 @@
     text-align: center;
     position: relative;
     padding: 10px;
+    margin-left: 3px;
 }
 
 .foodBox:hover {
@@ -29,7 +30,7 @@
 
 .foodBox-title {
     text-align: left;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 600;
 }
 

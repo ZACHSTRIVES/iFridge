@@ -18,15 +18,21 @@ const Content: React.FC<ContentProps> = ({ fridge, fridgeId }) => {
 
 
     const { loading, data, refetch } = useQuery<Fridge>(FRIDGE, { variables: { fridgeId } })
-
+    console.log(data)
 
     return (
         <div className="content">
             {loading ? <p>Loading</p> :
-                <ContentTopBar fridgeName={data?.fridge.name} users={data?.fridge.userFridges} fridgeID={fridge?.id} refetch={refetch}></ContentTopBar>
+                <div>
+                    <ContentTopBar fridgeName={data?.fridge.name} users={data?.fridge.userFridges} fridgeID={fridge?.id} refetch={refetch}></ContentTopBar>
+
+                    
+                </div>
             }
             <div className="subTitle">Eat Them Today！</div>
-            <SlideFoodList></SlideFoodList>
+            {loading ? <p>Loading</p> :
+               <SlideFoodList foods={fridge.foods} refetch={refetch}></SlideFoodList>
+            }
             <div className="subContiner">
 
                 <FoodTable></FoodTable>

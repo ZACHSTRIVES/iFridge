@@ -11,6 +11,7 @@ export interface Fridge_fridge_foods {
   __typename: "Food";
   id: string;
   fridgeID: string;
+  name: string;
   originQTY: number;
   currentQTY: number;
   type: string;

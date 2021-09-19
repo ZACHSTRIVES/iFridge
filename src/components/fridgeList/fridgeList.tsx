@@ -9,6 +9,7 @@ export interface FridgeListProps {
     changeFridge: any;
     userFridges?: Self_self_userFridges[];
     currentFridgeId?: String;
+   
 }
 
 
