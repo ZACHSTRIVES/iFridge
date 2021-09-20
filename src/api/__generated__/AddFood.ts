@@ -9,6 +9,16 @@
 
 export interface AddFood_addFood {
   __typename: "Food";
+  id: string;
+  fridgeID: string;
+  name: string;
+  originQTY: number;
+  currentQTY: number;
+  type: string;
+  notes: string;
+  expireDate: any;
+  modified: any;
+  created: any;
 }
 
 export interface AddFood {
@@ -16,10 +26,11 @@ export interface AddFood {
 }
 
 export interface AddFoodVariables {
-  FridgeId: number;
-  OriginQTY: number;
-  CurrentQTY: number;
-  Type: string;
-  Notes: string;
-  ExpireDate?: any | null;
+  fridgeId: string;
+  name: string;
+  originQTY: string;
+  currentQTY: string;
+  type: string;
+  notes: string;
+  expireDate: any;
 }

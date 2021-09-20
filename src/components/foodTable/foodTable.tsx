@@ -2,11 +2,13 @@ import { IconButton } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import React from "react";
 import FoodCol from "./foodCol";
+import AddFoodDialog from "./addFoodDialog";
 import "./foodTable.css"
 
 export interface FoodTableProps {
     foods: any
     refetch: any
+    fridgeID:String
 }
 
 function getDiffDate(targetDate: any) {
@@ -21,12 +23,22 @@ function getDiffDate(targetDate: any) {
 
 
 
-const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch }) => {
+const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch,fridgeID }) => {
+    const [open,setOpen]=React.useState(false)
+
+    const handleOpen = ()=>{
+        setOpen(true);
+    } 
+    const handleClose = ()=>{
+        setOpen(false);
+    } 
+
+
     return (
         <div className="foodTable">
             <div className="foodTable-title">
                 <div className="subTitle">All Food</div>
-                <IconButton color="primary" aria-label="upload picture" component="span">
+                <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleOpen}>
                     <Add />
                 </IconButton>
 
@@ -43,6 +55,8 @@ const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch }) => {
 
 
             </div>
+
+            <AddFoodDialog open={open} refetch={refetch} handleClose={handleClose} fridgeID={fridgeID}></AddFoodDialog>
 
         </div>
     )
