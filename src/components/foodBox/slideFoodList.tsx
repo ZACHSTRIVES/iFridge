@@ -13,7 +13,6 @@ function getDiffDate(targetDate: any) {
     let date2 = new Date();
     date1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
     date2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
-    console.log(date1, date2)
     const diff = date1.getTime() - date2.getTime();
     const diffDate = diff / (24 * 60 * 60 * 1000) - 1;
     return diffDate;

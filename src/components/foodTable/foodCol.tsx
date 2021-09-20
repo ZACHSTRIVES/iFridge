@@ -1,21 +1,27 @@
-import { Box, Chip, IconButton, LinearProgress } from "@material-ui/core";
-import { Add, Remove, DeleteForever, AccessTime } from "@material-ui/icons";
+import { Box, Chip, LinearProgress } from "@material-ui/core";
+import { AccessTime } from "@material-ui/icons";
 import React from "react"
-import image from '../../static/foods/Meat/BEEF.png'
+import FoodCard from "../foodCard/foodCard";
 
 
 export interface FoodColProps {
     food: any
     refetch: any
     expireDate: number
+    onClick:any
 }
 
 
-const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate }) => {
+const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate,onClick }) => {
+
     const imge = require(`../../static/foods/${food.type}/${food.name}.png`).default
     let perc = (food.currentQTY / food.originQTY) * 100
+    
+
+
+
     return (
-        <div className="foodCol">
+        <div className="foodCol" onClick={onClick}>
             <div className="foodCol-fp">
                 <img className="foodCol-img" src={imge}></img>
                 <div className="foodCol-stats">
@@ -55,7 +61,7 @@ const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate }) => {
                             />
                         )
                     } else if (expireDate === 1) {
-                        return ( <Chip
+                        return (<Chip
                             variant="outlined"
                             size="small"
                             icon={<AccessTime />}
@@ -63,13 +69,13 @@ const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate }) => {
                             color="secondary"
                         />)
                     } else if (expireDate > 1) {
-                        let str=`Expire in ${expireDate} days`
+                        let str = `Expire in ${expireDate} days`
                         return (<Chip
                             variant="outlined"
                             size="small"
                             icon={<AccessTime />}
                             label={str}
-                          
+
                         />
 
                         )
@@ -80,9 +86,6 @@ const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate }) => {
 
 
             </div>
-
-
-
 
         </div>
     )
