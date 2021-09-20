@@ -101,15 +101,16 @@ export const ADD_USERFRIDGE = gql`
 
 export const ADD_FOOD = gql`
   mutation AddFood(
-    $FridgeId: Int!
-    $OriginQTY: Int!
-    $CurrentQTY: Int!
-    $Type:String!
-    $Notes: String!
-    $ExpireDate:DateTime
+    $fridgeId: String!
+    $name: String!
+    $originQTY: String!
+    $currentQTY: String!
+    $type:String!
+    $notes: String!
+    $expireDate:DateTime!
   ) {
-    addFood(input: { fridgeId: $FridgeId, originQTY: $QriginQTY, currentQTY: $CurrentQTY, type:$Type, expireDate:$ExpireDate},notes:$Notes) {
-      ...userFridgeFields
+    addFood(input: { fridgeID: $fridgeId, name:$name, originQTY: $originQTY, currentQTY: $currentQTY, type:$type, expireDate:$expireDate,notes:$notes}) {
+      ...foodFields
     }
   }
   ${fragments.FOOD}

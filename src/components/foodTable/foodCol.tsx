@@ -1,25 +1,91 @@
-import { Box, IconButton, LinearProgress } from "@material-ui/core";
-import { Add,Remove,DeleteForever } from "@material-ui/icons";
+import { Box, Chip, LinearProgress } from "@material-ui/core";
+import { AccessTime } from "@material-ui/icons";
 import React from "react"
-import image from '../../static/foods/Meat/BEEF.png'
+import FoodCard from "../foodCard/foodCard";
 
-const FoodCol = () => {
+
+export interface FoodColProps {
+    food: any
+    refetch: any
+    expireDate: number
+    onClick:any
+}
+
+
+const FoodCol: React.FC<FoodColProps> = ({ food, refetch, expireDate,onClick }) => {
+
+    const imge = require(`../../static/foods/${food.type}/${food.name}.png`).default
+    let perc = (food.currentQTY / food.originQTY) * 100
+    
+
+
+
     return (
-        <div className="foodCol">
-            <img className="foodCol-img" src={image}></img>
-            <div className="foodCol-stats">
-                <div>
-                    <a className="foodCol-name">Beef</a>
-                    <a className="foodCol-qty">180/360</a>
-                </div>
-                <div className="foodCol-progress">
-                    <Box sx={{ width: '100%' }}>
-                        <LinearProgress variant="buffer" value={50} valueBuffer={50} />
-                    </Box>
+        <div className="foodCol" onClick={onClick}>
+            <div className="foodCol-fp">
+                <img className="foodCol-img" src={imge}></img>
+                <div className="foodCol-stats">
+                    <div className="foodBox-days">
+
+                        <a className="foodCol-name">{food.name}</a>
+                        <a className="foodCol-qty">{food.currentQTY}/{food.originQTY}</a>
+
+                    </div>
+                    <div className="foodCol-progress">
+                        <Box sx={{ width: `100%` }}>
+                            <LinearProgress variant="buffer" value={perc} valueBuffer={100} />
+                        </Box>
+                    </div>
+
                 </div>
             </div>
-           
+            <div className="foodCol-timeChip">
+                {(() => {
+                    if (expireDate === 0) {
+                        return (
+                            <Chip
+                                variant="outlined"
+                                size="small"
+                                icon={<AccessTime />}
+                                label="Expiring today"
+                                color="secondary"
+                            />
+                        )
+                    } else if (expireDate <= -1) {
+                        return (
+                            <Chip
+                                size="small"
+                                icon={<AccessTime />}
+                                label="Expired"
+                                color="secondary"
+                            />
+                        )
+                    } else if (expireDate === 1) {
+                        return (<Chip
+                            variant="outlined"
+                            size="small"
+                            icon={<AccessTime />}
+                            label="Expire in 1 day"
+                            color="secondary"
+                        />)
+                    } else if (expireDate > 1) {
+                        let str = `Expire in ${expireDate} days`
+                        return (<Chip
+                            variant="outlined"
+                            size="small"
+                            icon={<AccessTime />}
+                            label={str}
 
+                        />
+
+                        )
+
+
+                    }
+                })()}
+
+
+            </div>
 
         </div>
     )

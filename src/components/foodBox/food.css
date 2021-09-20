@@ -49,3 +49,7 @@
     position: absolute;
     bottom: 0;
 }
+
+.foodBox-days {
+    display: flex;
+}

@@ -26,17 +26,20 @@ const Content: React.FC<ContentProps> = ({ fridge, fridgeId }) => {
                 <div>
                     <ContentTopBar fridgeName={data?.fridge.name} users={data?.fridge.userFridges} fridgeID={fridge?.id} refetch={refetch}></ContentTopBar>
 
-                    
+
                 </div>
             }
             <div className="subTitle">Eat Them Today！</div>
             {loading ? <p>Loading</p> :
-               <SlideFoodList foods={fridge.foods} refetch={refetch}></SlideFoodList>
+                <SlideFoodList foods={data?.fridge.foods} refetch={refetch}></SlideFoodList>
             }
             <div className="subContiner">
+                {loading ? <p>Loading</p> :
+                    <FoodTable foods={data?.fridge.foods} refetch={refetch} fridgeID={fridge.id}></FoodTable>
 
-                <FoodTable></FoodTable>
+                }
                 <RecipeBox></RecipeBox>
+
             </div>
         </div>
     )
