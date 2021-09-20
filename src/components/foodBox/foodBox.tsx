@@ -22,7 +22,7 @@ const FoodBox: React.FC<FoodBoxProps> = ({ food, refetch,expireDate }) => {
                 if (expireDate === 0) {
                     return (
                         <div className="foodBox-desc">
-                            Expire today
+                            Expiring today
                         </div>
                     )
                 } else if (expireDate === -1) {
@@ -53,11 +53,6 @@ const FoodBox: React.FC<FoodBoxProps> = ({ food, refetch,expireDate }) => {
             })()}
 
             <img className="foodBox-foodImg" src={imge}></img>
-            <div className="foodBox-progress">
-                <Box sx={{ width: '100%' }}>
-                    <LinearProgress variant="buffer" value={50} valueBuffer={60} />
-                </Box>
-            </div>
         </div>
     )
 }

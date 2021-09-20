@@ -35,7 +35,7 @@ const Content: React.FC<ContentProps> = ({ fridge, fridgeId }) => {
             }
             <div className="subContiner">
 
-                <FoodTable></FoodTable>
+                <FoodTable foods={fridge.foods} refetch={refetch}></FoodTable>
                 <RecipeBox></RecipeBox>
             </div>
         </div>
