@@ -15,11 +15,21 @@ export interface AddUserFridge_addUserFridge_user {
   imageURI: string;
 }
 
+export interface AddUserFridge_addUserFridge_fridge {
+  __typename: "Fridge";
+  id: string;
+  name: string;
+  ownerId: string;
+  modified: any;
+  created: any;
+}
+
 export interface AddUserFridge_addUserFridge {
   __typename: "UserFridge";
   userId: string;
   fridgeId: string;
   user: AddUserFridge_addUserFridge_user;
+  fridge: AddUserFridge_addUserFridge_fridge;
 }
 
 export interface AddUserFridge {

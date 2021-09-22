@@ -46,6 +46,7 @@ const AddFridgeModal: React.FC<addFridgeModalPropos> = ({ isShow, controlModal, 
             fridgeId: data.addFridge.id
           }
         })
+        console.log(res)
         addNewFridgeToLocal(res.data?.addUserFridge)
 
       }

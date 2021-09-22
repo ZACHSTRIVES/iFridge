@@ -9,6 +9,7 @@ import { ADD_USERFRIDGE } from '../../api/mutations';
 import { useMutation } from "@apollo/client";
 import Alert from '@material-ui/lab/Alert';
 import DeleteFridgemate from "./deleteFridgemate";
+import { idText } from "typescript";
 
 export interface EditFridgemateProps {
     users?: any
@@ -64,6 +65,9 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, up
         setShowAddError(false);
     };
     const handleShowDelete = (dName?: any, dId?: any) => {
+        if(dId===ID){
+            return
+        }
         if (dName) {
             setDeleteName(dName);
         }
@@ -86,7 +90,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, up
             return
         }
         try {
-            const {data} = await addUserFridge({
+            const { data } = await addUserFridge({
                 variables: {
                     userId: userID,
                     fridgeId: fridgeID
@@ -99,7 +103,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, up
         }
     }
 
-    const addFridgemates = (fm:any)=>{
+    const addFridgemates = (fm: any) => {
         var temp = [...users]
         temp.push(fm)
         updateFridegmates(temp)
@@ -121,8 +125,10 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, up
                                 <Avatar src={u.user.imageURI}>
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={u.user.name} secondary="Remove" />
+                            {u.user.id === ID ? <ListItemText primary={u.user.name} /> : <ListItemText primary={u.user.name} secondary="Remove" />}
+
                         </ListItem>
+
 
                     ))}
 
@@ -173,7 +179,7 @@ const EditFridgemate: React.FC<EditFridgemateProps> = ({ users, fridgeID, ID, up
                 show={showDelete}
                 handleClose={handleCloseDelete}
                 updateFridgemates={updateFridegmates}>
-                
+
 
             </DeleteFridgemate>
 

@@ -90,11 +90,15 @@ export const ADD_USERFRIDGE = gql`
       user{
         ...userFields
       }
+      fridge{
+        ...fridgeFields
+      }
       
     }
   }
   ${fragments.USERFRIDGE}
-    ${fragments.USER}
+  ${fragments.USER}
+  ${fragments.FRIDGE}
   
 `;
 

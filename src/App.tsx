@@ -11,7 +11,7 @@ import Home from './components/home/home';
 
 
 function App() {
-  const { loading, error, data } = useQuery<Self>(SELF);
+  const { loading, data,refetch } = useQuery<Self>(SELF);
   const [showLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
 
         </Route>
         <Route exact path="/home">
-          {loading?<a></a>:<Home user={data?.self} id={data?.self.id}></Home>}
+          {loading? <ReactLoading type={"cylon"} height={200} width={100}></ReactLoading>:<Home user={data?.self} id={data?.self.id}></Home>}
         </Route>
 
         </Switch>

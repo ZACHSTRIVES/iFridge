@@ -12,9 +12,10 @@ import "./home.css"
 export interface ContentProps {
     fridge?: any
     fridgeId: any
+    userId?:String
 }
 
-const Content: React.FC<ContentProps> = ({ fridge, fridgeId }) => {
+const Content: React.FC<ContentProps> = ({ fridge, fridgeId,userId }) => {
 
 
     const { loading, data, refetch } = useQuery<Fridge>(FRIDGE, { variables: { fridgeId } })
@@ -24,7 +25,7 @@ const Content: React.FC<ContentProps> = ({ fridge, fridgeId }) => {
         <div className="content">
             {loading ? <p>Loading</p> :
                 <div>
-                    <ContentTopBar fridgeName={data?.fridge.name} users={data?.fridge.userFridges} fridgeID={fridge?.id} refetch={refetch} ownerID={data?.fridge.ownerId}></ContentTopBar>
+                    <ContentTopBar fridgeName={data?.fridge.name} users={data?.fridge.userFridges} fridgeID={fridge?.id} refetch={refetch} ownerID={data?.fridge.ownerId} ID={userId}></ContentTopBar>
 
 
                 </div>

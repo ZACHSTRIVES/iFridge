@@ -3,9 +3,8 @@ import React from "react"
 import { Self_self } from "../../api/__generated__/Self";
 import SideNav from "./sideNav";
 import Content from "./content";
-import { useQuery } from '@apollo/client';
-import { USERFRIDGE } from '../../api/queries';
-import { UserFridges } from '../../api/__generated__/UserFridges';
+import { Redirect } from 'react-router-dom';
+
 
 
 export interface HomeProps {
@@ -27,13 +26,16 @@ const Home: React.FC<HomeProps> = ({ user, id }) => {
 
 
     function changeFridge(fridge: any) {
+        console.log(fridge)
         setCurrentFridge(fridge)
     }
 
     return (
         <section className="homeContainer">
+            {user?"":<Redirect to="/"></Redirect>}
+
             <SideNav user={user} changeFridge={changeFridge} userFridges={userFridges} currentFridgeId={currentFridge?.id}></SideNav>
-            {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id}></Content> : <p>You don't have one yet, build one!</p>}
+            {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id} userId={user?.id}></Content> : <p>You don't have one yet, build one!</p>}
 
 
         </section>

@@ -15,13 +15,11 @@ export interface topBarProps {
 
 
 const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,refetch,ownerID }) => {
-    
     const numOfFridgemate = users.length;
 
     const updateFridgemates = (uf:any)=>{
         refetch()
     }
-
 
     return (
         <div className="contentTopBar">
@@ -40,7 +38,7 @@ const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,r
                     <p>share this</p>
                 </div>}
 
-                {users.id===ownerID?<EditFridgemate users={users} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>:""}
+                {ID===ownerID?<EditFridgemate users={users} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>:""}
 
                 
 
