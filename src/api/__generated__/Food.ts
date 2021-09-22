@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: EditFood
+// GraphQL query operation: Food
 // ====================================================
 
-export interface EditFood_editFood {
+export interface Food_food {
   __typename: "Food";
   id: string;
   fridgeID: string;
@@ -21,15 +21,10 @@ export interface EditFood_editFood {
   created: any;
 }
 
-export interface EditFood {
-  editFood: EditFood_editFood;
+export interface Food {
+  food: Food_food;
 }
 
-export interface EditFoodVariables {
-  foodID: string;
-  originQTY: string;
-  currentQTY: string;
-  notes: string;
-  type: string;
-  expireDate: any;
+export interface FoodVariables {
+  foodId: string;
 }

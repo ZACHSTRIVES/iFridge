@@ -2,3 +2,21 @@
     width:35%;
     height:35%;
 }
+
+.chip{
+    margin:10px;
+}
+
+.qtyBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.qtyBox-currentQTY{
+    font-size: 30px;
+    font-weight: bolder;
+
+}

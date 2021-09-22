@@ -27,7 +27,7 @@ function getDiffDate(targetDate: any) {
 const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch,fridgeID }) => {
     const [open,setOpen]=React.useState(false)
     const [showFoodCard, setShowFoodCard] = React.useState(false)
-    const [currentShowFood, setCurrentShowFood] = React.useState<any>(foods[0])
+    const [currentShowFood, setCurrentShowFood] = React.useState<any>(null)
     
 
     const handleShowFoodCard=(food:any)=>{
@@ -38,6 +38,7 @@ const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch,fridgeID }) => {
 
     const handleCloseFoodCard=()=>{
         setShowFoodCard(false);
+        setCurrentShowFood(null);
     }
 
     const handleOpen = ()=>{
@@ -71,7 +72,7 @@ const FoodTable: React.FC<FoodTableProps> = ({ foods, refetch,fridgeID }) => {
             </div>
 
             <AddFoodDialog open={open} refetch={refetch} handleClose={handleClose} fridgeID={fridgeID}></AddFoodDialog>
-            <FoodCard open={showFoodCard} handleClose={handleCloseFoodCard} food={currentShowFood} refetch={refetch}></FoodCard>
+            {currentShowFood? <FoodCard open={showFoodCard} handleClose={handleCloseFoodCard} food={currentShowFood} refetch={refetch}></FoodCard>:""}
 
         </div>
     )

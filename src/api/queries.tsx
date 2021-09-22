@@ -112,3 +112,15 @@ export const FRIDGE = gql`
     ${fragments.USERFRIDGE}
     ${fragments.USER}
 `
+
+
+
+
+export const FOOD = gql`
+    query Food($foodId: String!) {
+        food(input:{foodId:$foodId}){
+            ...foodFields
+        }
+    }
+    ${fragments.FOOD}
+`

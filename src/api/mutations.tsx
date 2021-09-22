@@ -118,27 +118,27 @@ export const ADD_FOOD = gql`
 
 export const EDIT_FOOD = gql`
   mutation EditFood(
-    $FoodId: ID!
-    $OriginQTY: Int!
-    $CurrentQTY: Int!
-    $Notes: String!
-    $Type:String!
-    $ExpireDate:DateTime
+    $foodID: String!
+    $originQTY: String!
+    $currentQTY: String!
+    $notes: String!
+    $type: String!
+    $expireDate: DateTime!
   ) {
-    editFridge(
+    editFood(
       input: {
-        foodId:$FoodId,
-        originQTY: $QriginQTY, 
-        currentQTY: $CurrentQTY, 
-        type: $Type, 
-        notes: $Notes,
+        foodID:$foodID,
+        originQTY: $originQTY, 
+        currentQTY: $currentQTY, 
+        type: $type, 
+        notes: $notes,
         expireDate: $expireDate
       }
     ) {
-      ...fridgeFields
+      ...foodFields
     }
   }
-  ${fragments.FRIDGE}
+  ${fragments.FOOD}
 `;
 
 export const DELETE_FRIDGE = gql`
@@ -191,4 +191,20 @@ export const REMOVE_FRIDGEMATE = gql`
   }
   ${fragments.USERFRIDGE}
   ${fragments.USER}
+`;
+
+
+export const DELETE_FOOD = gql`
+  mutation DeleteFood(
+    $foodId: String!
+  ) {
+    deleteFood(
+      input: {
+        foodId:$foodId,
+      }
+    ) {
+      ...foodFields
+    }
+  }
+  ${fragments.FOOD}
 `;
