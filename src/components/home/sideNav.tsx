@@ -17,7 +17,7 @@ const SideNav: React.FC<SideNavProps> = ({ user, changeFridge, userFridges, curr
             <ProfileAvater
                 url={user?.imageURI}
                 nickName={user?.gitHub}
-                name={user?.name}>
+                id={user?.id}>
             </ProfileAvater>
             
             <FridgeList

@@ -7,7 +7,7 @@ import './profile.css'
 export interface AvatarProps {
   url?: string;
   nickName?: string;
-  name?: string;
+  id?: string;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const ProfileAvatar: React.FC<AvatarProps> = ({ url, nickName, name }) => {
+const ProfileAvatar: React.FC<AvatarProps> = ({ url, nickName, id}) => {
   const classes = useStyles();
 
   return (
@@ -36,7 +36,7 @@ const ProfileAvatar: React.FC<AvatarProps> = ({ url, nickName, name }) => {
       <Avatar src={url} className={classes.large}></Avatar>
       <div className="nameFiled">
         <div className="nickName">{nickName}</div>
-        <div className="name">{name}</div>
+        <div className="name">#{id}</div>
 
       </div>
 

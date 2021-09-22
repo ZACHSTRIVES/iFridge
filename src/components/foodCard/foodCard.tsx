@@ -199,6 +199,7 @@ const FoodCard: React.FC<FoodCardProps> = ({ food, open, handleClose, refetch })
 
 
 
+
 export default FoodCard;
 
 

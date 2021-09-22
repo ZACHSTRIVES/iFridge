@@ -10,10 +10,11 @@ export interface topBarProps {
     fridgeID?: any
     ID?:String
     refetch:any
+    ownerID?:String
 }
 
 
-const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,refetch }) => {
+const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,refetch,ownerID }) => {
     
     const numOfFridgemate = users.length;
 
@@ -39,7 +40,9 @@ const ContentTopBar: React.FC<topBarProps> = ({ fridgeName, users, fridgeID,ID,r
                     <p>share this</p>
                 </div>}
 
-                <EditFridgemate users={users} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>
+                {users.id===ownerID?<EditFridgemate users={users} fridgeID={fridgeID} ID={ID} updateFridegmates={updateFridgemates}></EditFridgemate>:""}
+
+                
 
             </div>
 
