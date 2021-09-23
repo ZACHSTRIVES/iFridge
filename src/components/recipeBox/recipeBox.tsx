@@ -3,7 +3,8 @@ import React from "react";
 
 
 const RecipeBox = ()=>{
-    return(<div>
+    return(<div className="recipeBox">
+         <div className="subTitle">Recipes</div>
 
     </div>)
 }
