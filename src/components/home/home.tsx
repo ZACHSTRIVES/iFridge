@@ -4,6 +4,7 @@ import { Self_self } from "../../api/__generated__/Self";
 import SideNav from "./sideNav";
 import Content from "./content";
 import { Redirect } from 'react-router-dom';
+import NoFridegContent from './noFridgeContent';
 
 
 
@@ -35,7 +36,7 @@ const Home: React.FC<HomeProps> = ({ user, id }) => {
             {user?"":<Redirect to="/"></Redirect>}
 
             <SideNav user={user} changeFridge={changeFridge} userFridges={userFridges} currentFridgeId={currentFridge?.id}></SideNav>
-            {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id} userId={user?.id}></Content> : <p>You don't have one yet, build one!</p>}
+            {currentFridge ? <Content fridge={currentFridge} fridgeId={currentFridge.id} userId={user?.id}></Content> : <NoFridegContent></NoFridegContent>}
 
 
         </section>
