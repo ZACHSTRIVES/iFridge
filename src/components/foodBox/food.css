@@ -53,3 +53,11 @@
 .foodBox-days {
     display: flex;
 }
+
+.noDataFoodList-img{
+    width:20%
+}
+
+.noDataFoodList{
+    text-align: center;
+}
