@@ -57,6 +57,23 @@ section.homeContainer {
     overflow-y: auto;
 }
 
+.noFridgeContent{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.noFridgeContent-img{
+    width:30%;
+}
+.noFridgeContent-text{
+    margin-top: 20px;
+    font-size: medium;
+    color:gray;
+}
+
 @media only screen and (max-width: 600px) {
     .subContiner{
         flex-direction: column;

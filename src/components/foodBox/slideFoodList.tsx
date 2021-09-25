@@ -1,5 +1,6 @@
 import React from "react";
 import FoodBox from "./foodBox";
+import NoDataFoodList from "./noDataFoodList";
 import './food.css'
 
 
@@ -21,6 +22,7 @@ function getDiffDate(targetDate: any) {
 
 const SlideFoodList: React.FC<SlideFoodListProps> = ({ foods, refetch }) => {
     return (
+       
         <div className="slideFoodList">
 
             {foods.map((food: any) => {
